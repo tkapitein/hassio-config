@@ -1,7 +1,6 @@
 # Example .gitignore file for your config dir.
 # A * ensures that everything will be ignored.c
 
-*
 
 # You can whitelist files/folders with !, these will not be ignored.
 !*.yaml
@@ -11,14 +10,28 @@
 !automations/
 !themes/
 !scenes/
-!custom_components/
 
 # Ignore folders.
 .storage
 .cloud
 .google.token
+.ios.conf
+.storage
+deps
+tts
+
+.HA_VERSION
 
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
 known_devices.yaml
+
+home-assistant.log
+home-assistant_v2.db
+options.xml
+OZW_Log.txt
+pyozw.sqlite
+zone.yaml
+zwcfg_0xfdb441bf.xml
+zwscene.xml
