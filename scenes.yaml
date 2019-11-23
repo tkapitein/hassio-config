@@ -1,0 +1,30 @@
+- id: '1574539588856'
+  name: Studeerkamer - Work mode
+  entities:
+    light.color_temperature_light_1:
+      brightness: 254
+      color_temp: 267
+      state: 'on'
+    light.color_temperature_light_2:
+      brightness: 254
+      color_temp: 267
+      state: 'on'
+    light.color_temperature_light_3:
+      brightness: 254
+      color_temp: 267
+      state: 'on'
+- id: '1574539631494'
+  name: Studeerkamer - Work mode
+  entities:
+    light.color_temperature_light_1:
+      brightness: 254
+      color_temp: 267
+      state: 'on'
+    light.color_temperature_light_2:
+      brightness: 254
+      color_temp: 267
+      state: 'on'
+    light.color_temperature_light_3:
+      brightness: 254
+      color_temp: 267
+      state: 'on'
