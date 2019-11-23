@@ -1,0 +1,72 @@
+
+ # Set washing machine status to running when it starts using power
+- alias: 'Set wasmachine to running status'
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.garage_power_plug_power
+    above: 10
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Idle
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Running
+    - service: notify.ios_iphone_van_tim
+      data:
+        message: 'De wasmachine draait'
+        
+# When the power drops the status gets changed to Idle
+- alias: Set washing machine to Idle when power drops
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.garage_power_plug_power
+      below: 6
+      for:
+        minutes: 3
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_select.washing_machine_status
+        state: Running
+  action:
+    - service: input_select.select_option
+      data:
+        entity_id: input_select.washing_machine_status
+        option: Idle
+    - service: notify.ios_iphone_van_tim
+      data:
+        message: 'De wasmachine is klaar'
+    - service: script.sonos_say
+      data:
+          sonos_entity: media_player.huiskamer
+          volume: 0.5
+          message: 'De wasmachine is klaar'
+          delay: '00:00:05'
+# Washing machine is leaking
+- alias: 'Alarm when washing machine is leaking'
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.wasmachine_water_sensor
+      from: 'off'
+      to: 'on'
+  action:
+     - service: notify.ios_iphone_van_tim
+       data:
+         title: 'Alarm - Wasmachine'
+         message: 'Er is water gedetecteerd bij de wasmachine.'
+         data:
+          push:
+            badge: 5
+     - service: script.sonos_say
+       data:
+          sonos_entity: media_player.huiskamer
+          volume: 0.5
+          message: 'Let op, er is water gedetecteerd bij de wasmachine.'
+          delay: '00:00:05'
+     

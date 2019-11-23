@@ -1,0 +1,15 @@
+- alias: 'Achterdeur open terwijl niemand thuis'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.achterdeur_sensor
+      from: 'on'
+      to: 'off'
+  condition:
+      condition: state
+      entity_id: device_tracker.iphone_van_tim
+      state: 'not_home'
+  action:
+      service: notify.ios_iphone_van_tim
+      data:
+        title: "Let op!"
+        message: "De achterdeur is net open gegaan."

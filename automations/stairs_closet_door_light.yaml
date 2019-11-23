@@ -1,0 +1,18 @@
+- alias: 'Trapkast licht aan wanneer deur open'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.trapkast_deur_sensor
+      to: 'on'
+  action:
+    - service: light.turn_on
+      data_template:
+        entity_id: light.trapkast
+- alias: 'Trapkast licht uit wanneer deur dicht'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.trapkast_deur_sensor
+      to: 'off'
+  action:
+    - service: light.turn_off
+      data_template:
+        entity_id: light.trapkast

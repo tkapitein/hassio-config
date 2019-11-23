@@ -1,0 +1,21 @@
+- alias: 'Trapopgang beweging'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.trapopgang_motion_sensor_sensor
+      to: 'on'
+  action:
+    - service: switch.turn_on
+      data_template:
+        entity_id: switch.trapopgang_licht
+
+- alias: 'Trapopgang geen beweging'
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.trapopgang_motion_sensor_sensor
+      to: 'off'
+      for:
+          minutes: 1
+  action:
+    - service: switch.turn_off
+      data_template:
+        entity_id: switch.trapopgang_licht

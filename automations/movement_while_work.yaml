@@ -1,0 +1,15 @@
+- alias: "Movement in the house when Tim is at work"
+  trigger:
+        platform: state
+        entity_id: binary_sensor.gang_motion_sensor
+        from: "off"
+        to: "on"
+  condition:
+        condition: zone
+        entity_id: device_tracker.iphone_van_tim
+        zone: zone.new_black
+  action:
+        service: notify.ios_iphone_van_tim
+        data:
+            title: "Attentie attentie"
+            message: "Er is beweging in de gang"
