@@ -20,9 +20,6 @@ frontend:
 zone: !include zone.yaml
 automation: !include_dir_merge_list automations/
 script: !include_dir_named scripts/
-resources:
-  - url: /community_plugin/compact-custom-header/compact-custom-header.js
-    type: module
 zwave:
     usb_path: /dev/ttyACM0
 # Example configuration.yaml entry
