@@ -25,6 +25,7 @@ tts
 # Ensure these YAML files are ignored, otherwise your secret data/credentials will leak.
 ip_bans.yaml
 secrets.yaml
+zwave_device_config.yaml
 known_devices.yaml
 
 home-assistant.log
@@ -35,3 +36,4 @@ pyozw.sqlite
 zone.yaml
 zwcfg_0xfdb441bf.xml
 zwscene.xml
+.ring_cache.pickle

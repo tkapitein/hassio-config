@@ -31,4 +31,11 @@ tado:
   username: !secret tado_username
   password: !secret tado_password
 
+ring:
+  username: !secret ring_username
+  password: !secret ring_password
+
+binary_sensor:
+  - platform: ring
+
 input_select: !include configuration/input_select.yaml
